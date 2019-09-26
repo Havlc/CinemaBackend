@@ -1,2 +1,0 @@
-# Cinema
-Created with CodeSandbox
