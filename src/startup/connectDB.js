@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 module.exports = function() {
   const db =
-    "mongodb+srv://cinemaUser:<password>@-rx1q7.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://cinemaUser:<passwordOnTrello>@cinemaapp-rx1q7.mongodb.net/test?retryWrites=true&w=majority";
 
   mongoose
     .connect(db, {

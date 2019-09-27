@@ -9,10 +9,13 @@ const RepertoireSchema = new mongoose.Schema({
       title: String,
       description: String,
       posterUrl: String,
-      showtimes: [
+      showTimes: [
         {
           time: String,
-          places: [[Number]]
+          occupiedPlaces: [{
+            row: Number,
+            sit: Number
+          }]
         }
       ]
     }
@@ -27,10 +30,13 @@ function validateRepertoire(repertoire) {
         title: Joi.string().required(),
         description: Joi.string(),
         posterUrl: Joi.string().uri(),
-        showtimes: Joi.array().items(
+        showTimes: Joi.array().items(
           Joi.object().keys({
             time: Joi.moment().required(),
-            places: Joi.array().items(Joi.array().items(Joi.number()))
+            occupiedPlaces: Joi.array().items(Joi.object().keys({
+              row: Joi.number(),
+              sit: Joi.number()
+            }))
           })
         )
       })
