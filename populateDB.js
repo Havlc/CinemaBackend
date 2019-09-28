@@ -7,29 +7,6 @@ const axios = require("axios");
 moment.locale("pl");
 moment.tz.setDefault("Europe/Warsaw");
 
-// const data = [
-//   {
-//     date: moment().format("ddd"),
-//     movies: [
-//       {
-//         title: "Avengers 2",
-//         description: "Lorem ipsum description of movie....",
-//         posterUrl: "https://ssl-gfx.filmweb.pl/po/05/42/790542/7881430.6.jpg",
-//         showTimes: [
-//           {
-//             time: moment().format("LT"),
-//             occupiedPlaces: [{row: 2, sit: 4}, {row: 2, sit: 5}]
-//           },
-//           {
-//             time: moment().format("LT"),
-//             occupiedPlaces: [{row: 3, sit: 5}, {row: 3, sit: 6}, {row: 3, sit: 7}]
-//           }
-//         ]
-//       }
-//     ]
-//   }
-// ];
-
 const createData = async days => {
   const baseExternalApiUrl = 'http://image.tmdb.org/t/p';
   const movies = await axios.get(
@@ -37,7 +14,7 @@ const createData = async days => {
   );
   const moviesTable = movies.data.results
   const data = []
-  
+
   for(let i = 0; i< days; i++){
     const obj = {
       date: moment().add(i, 'd').format('ddd'),
